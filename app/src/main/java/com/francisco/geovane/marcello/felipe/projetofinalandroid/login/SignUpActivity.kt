@@ -38,26 +38,28 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun signUpUser() {
-        if (tv_username.text.toString().isEmpty()) {
-            tv_username.error = "Please enter email"
+        val email: String = tv_username.text.toString()
+        val password: String = tv_password.text.toString()
+        if (email.isEmpty()) {
+            tv_username.error = "Por favor insira um e-mail"
             tv_username.requestFocus()
             return
         }
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(tv_username.text.toString()).matches()) {
-            tv_username.error = "Please enter valid email"
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            tv_username.error = "Por favor insira um e-mail válido"
             tv_username.requestFocus()
             return
         }
 
-        if (tv_password.text.toString().isEmpty()) {
-            tv_password.error = "Please enter password"
+        if (password.isEmpty()) {
+            tv_password.error = "Por favor insira uma senha"
             tv_password.requestFocus()
             return
         }
 
-        if(tv_password.text.toString().length < 6){
-            tv_password.error = "Password should be at least 6 characters"
+        if(password.length < 6){
+            tv_password.error = "A senha precisa ter no mínimo 6 caractéres"
             tv_password.requestFocus()
             return
         }

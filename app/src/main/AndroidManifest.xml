@@ -11,7 +11,7 @@
         android:theme="@style/Theme.ProjetoFinalAndroid">
         <activity
             android:name=".main.MainActivity"
-            android:label="@string/title_activity_main"></activity>
+            android:label="@string/title_activity_main" />
         <activity android:name=".splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
