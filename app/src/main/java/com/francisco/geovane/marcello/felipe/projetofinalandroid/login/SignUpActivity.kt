@@ -38,7 +38,7 @@ class SignUpActivity : AppCompatActivity() {
 
             bundle.clear()
             bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "$appId:$pageId:btnSignUpClick")
-            analytics?.logEvent("e_Click", bundle)
+            analytics.logEvent("e_Click", bundle)
 
             signUpUser()
         }
@@ -47,7 +47,7 @@ class SignUpActivity : AppCompatActivity() {
 
             bundle.clear()
             bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "$appId:$pageId:btnLoginClick")
-            analytics?.logEvent("e_Click", bundle)
+            analytics.logEvent("e_Click", bundle)
 
             startActivity(Intent(this, LoginActivity::class.java))
         }

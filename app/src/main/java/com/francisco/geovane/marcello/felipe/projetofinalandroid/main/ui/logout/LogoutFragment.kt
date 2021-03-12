@@ -6,10 +6,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.R
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.login.LoginActivity
@@ -18,7 +16,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-
 
 class LogoutFragment : Fragment() {
 
@@ -33,9 +30,9 @@ class LogoutFragment : Fragment() {
         auth = Firebase.auth
 
         val builder = AlertDialog.Builder(requireActivity())
-        builder.setMessage("Tem certeza que deseja realizar o logout no app?")
+        builder.setMessage(R.string.logout)
             .setCancelable(false)
-            .setPositiveButton("Sim") { dialog, id ->
+            .setPositiveButton(R.string.txt_yes) { dialog, id ->
                 auth.signOut()
                 val currentUser: FirebaseUser? = auth.currentUser
                 Log.i("USER", currentUser.toString())
@@ -46,7 +43,7 @@ class LogoutFragment : Fragment() {
                 }
 
             }
-            .setNegativeButton("Cancelar") { dialog, id ->
+            .setNegativeButton(R.string.txt_cancel) { dialog, id ->
                 val intent = Intent(activity, MainActivity::class.java)
                 startActivity(intent)
                 activity?.finish()
@@ -56,12 +53,11 @@ class LogoutFragment : Fragment() {
         alert.show()
 
         logoutViewModel = ViewModelProvider(this).get(LogoutViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_logout, container, false)
 
 //        val textView: TextView = root.findViewById(R.id.text_notifications)
 //        logoutViewModel.text.observe(viewLifecycleOwner, Observer {
 //            textView.text = it
 //        })
-        return root
+        return inflater.inflate(R.layout.fragment_logout, container, false)
     }
 }

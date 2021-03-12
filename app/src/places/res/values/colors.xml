@@ -7,6 +7,4 @@
     <color name="bgColorPrimary">#FFFFFFFF</color>
 
     <color name="textColorPrimary">#FFFFFFFF</color>
-    <color name="textColorSecondary">#000000</color>
-    <color name="textColorAlternative">#E0E0E0</color>
 </resources>

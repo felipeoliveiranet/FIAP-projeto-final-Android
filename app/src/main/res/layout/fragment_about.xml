@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="@string/version"
+            android:text="@string/about_version"
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -55,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:text="@string/by"
+            android:text="@string/about_by"
             android:textAlignment="center"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="30dp"
-        android:text="@string/copyright"
+        android:text="@string/about_copyright"
         android:textAlignment="center"
         android:textColor="@color/colorSecondary"
         android:textSize="14sp"

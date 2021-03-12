@@ -29,6 +29,6 @@ class ListFragment : Fragment() {
 
     override fun onDetach() {
         super.onDetach()
-        requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        requireActivity().window.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
     }
 }

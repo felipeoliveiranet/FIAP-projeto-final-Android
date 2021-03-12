@@ -21,8 +21,6 @@ class SplashActivity : AppCompatActivity() {
 
     private lateinit var imageView: ImageView
     private lateinit var title_txt: TextView
-    private lateinit var description_txt: TextView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

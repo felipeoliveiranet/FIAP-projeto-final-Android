@@ -19,10 +19,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.btn_sign_up
-import kotlinx.android.synthetic.main.activity_login.tv_password
-import kotlinx.android.synthetic.main.activity_login.tv_username
-import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -46,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
 
             bundle.clear()
             bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "$appId:$pageId:btnSingUpClick")
-            analytics?.logEvent("e_Click", bundle)
+            analytics.logEvent("e_Click", bundle)
 
             startActivity(Intent(this, SignUpActivity::class.java))
         }
@@ -55,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
 
             bundle.clear()
             bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "$appId:$pageId:btnLoginClick")
-            analytics?.logEvent("e_Click", bundle)
+            analytics.logEvent("e_Click", bundle)
 
             signInUser()
         }
