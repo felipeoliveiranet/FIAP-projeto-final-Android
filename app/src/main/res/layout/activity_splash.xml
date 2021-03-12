@@ -20,24 +20,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:id="@+id/title_text"
-        android:text="Projeto"
+        android:text="@string/app_name"
         android:textSize="40sp"
-        android:textColor="@color/white"
+        android:textColor="@color/textColorPrimary"
         android:fontFamily="sans-serif-black"
         android:layout_gravity="center"
         android:textAlignment="center"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/title_description"
-        android:text="Projeto de fim de curso"
-        android:textSize="14sp"
-        android:textColor="@color/white"
-        android:fontFamily="sans-serif-black"
-        android:layout_gravity="center"
-        android:textAlignment="center"/>
-
-
 </LinearLayout>

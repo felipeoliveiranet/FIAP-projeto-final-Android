@@ -12,6 +12,11 @@
         android:title="@string/title_dashboard" />
 
     <item
+        android:id="@+id/navigation_about"
+        android:icon="@drawable/ic_baseline_info_24"
+        android:title="@string/title_about" />
+
+    <item
         android:id="@+id/navigation_logout"
         android:icon="@drawable/ic_logout_24px"
         android:title="@string/title_notifications" />

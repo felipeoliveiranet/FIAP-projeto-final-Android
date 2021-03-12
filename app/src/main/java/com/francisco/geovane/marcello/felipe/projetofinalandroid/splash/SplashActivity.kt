@@ -44,11 +44,9 @@ class SplashActivity : AppCompatActivity() {
 
         imageView = findViewById(R.id.hr_image)
         title_txt = findViewById(R.id.title_text)
-        description_txt = findViewById(R.id.title_description)
 
         imageView.animation = topAnimation
         title_txt.animation = bottomAnimation
-        description_txt.animation = bottomAnimation
 
 
         Handler(Looper.getMainLooper()).postDelayed({
