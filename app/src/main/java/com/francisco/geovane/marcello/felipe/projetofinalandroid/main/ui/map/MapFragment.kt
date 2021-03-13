@@ -16,20 +16,24 @@ import com.francisco.geovane.marcello.felipe.projetofinalandroid.main.service.Go
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.main.service.GoogleMapsRequestApi
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.utils.AnalyticsUtils
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+
 
 class MapFragment : Fragment() {
 
     private var bundle: Bundle = Bundle()
     private lateinit var analytics: FirebaseAnalytics
+    private lateinit var remoteConfig: FirebaseRemoteConfig
 
     private var appId: String = BuildConfig.APP_ID
     private var pageId: String = "Map"
 
     private lateinit var mapViewModel: MapViewModel
 
-    private val key = ""
+    private val key = "AIzaSyD-3gjRiQfyaE4beBdjZJmBGYlkqITqxtc"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,11 +41,14 @@ class MapFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        remoteConfig = FirebaseRemoteConfig.getInstance()
+
+        val configSettings = FirebaseRemoteConfigSettings.Builder()
+            .setMinimumFetchIntervalInSeconds(3600)
+            .build()
 
         analytics = FirebaseAnalytics.getInstance(context)
         AnalyticsUtils.setPageData(analytics, bundle, appId, pageId)
-
-        mapViewModel = ViewModelProvider(this).get(MapViewModel::class.java)
 
         val root = inflater.inflate(R.layout.fragment_map, container, false)
 
@@ -91,7 +98,7 @@ class MapFragment : Fragment() {
             var name = detail?.name
             var cats: String = ""
 
-            if(categories != null) {
+            if (categories != null) {
 
                 for (cat in categories) {
 
