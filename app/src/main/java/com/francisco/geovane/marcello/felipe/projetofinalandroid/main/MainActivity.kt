@@ -6,14 +6,27 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.francisco.geovane.marcello.felipe.projetofinalandroid.BuildConfig
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.R
+import com.francisco.geovane.marcello.felipe.projetofinalandroid.utils.AnalyticsUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.analytics.FirebaseAnalytics
 
 class MainActivity : AppCompatActivity() {
+
+    private var bundle: Bundle = Bundle()
+    private lateinit var analytics: FirebaseAnalytics
+
+    private var appId: String = BuildConfig.APP_ID
+    private var pageId: String = "Main"
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+
+        analytics = FirebaseAnalytics.getInstance(this)
+        AnalyticsUtils.setPageData(analytics, bundle, appId, pageId)
+
         supportActionBar?.hide()
         setContentView(R.layout.activity_main)
         val navView: BottomNavigationView = findViewById(R.id.nav_view)

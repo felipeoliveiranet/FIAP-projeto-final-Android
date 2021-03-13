@@ -9,15 +9,24 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.francisco.geovane.marcello.felipe.projetofinalandroid.BuildConfig
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.R
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.login.LoginActivity
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.main.MainActivity
+import com.francisco.geovane.marcello.felipe.projetofinalandroid.utils.AnalyticsUtils
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class LogoutFragment : Fragment() {
+
+    private var bundle: Bundle = Bundle()
+    private lateinit var analytics: FirebaseAnalytics
+
+    private var appId: String = BuildConfig.APP_ID
+    private var pageId: String = "Logout"
 
     private lateinit var logoutViewModel: LogoutViewModel
     private lateinit var auth: FirebaseAuth
@@ -28,11 +37,14 @@ class LogoutFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         auth = Firebase.auth
+        analytics = FirebaseAnalytics.getInstance(context)
+        AnalyticsUtils.setPageData(analytics, bundle, appId, pageId)
 
         val builder = AlertDialog.Builder(requireActivity())
         builder.setMessage(R.string.logout)
             .setCancelable(false)
             .setPositiveButton(R.string.txt_yes) { dialog, id ->
+                AnalyticsUtils.setClickData(analytics, bundle, appId, pageId, "LogOut")
                 auth.signOut()
                 val currentUser: FirebaseUser? = auth.currentUser
                 Log.i("USER", currentUser.toString())

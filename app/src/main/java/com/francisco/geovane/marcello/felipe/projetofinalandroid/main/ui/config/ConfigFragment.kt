@@ -12,6 +12,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.BuildConfig
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.R
+import com.francisco.geovane.marcello.felipe.projetofinalandroid.utils.AnalyticsUtils
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.utils.LocaleUtils
 import com.google.firebase.analytics.FirebaseAnalytics
 
@@ -21,7 +22,7 @@ class ConfigFragment : Fragment() {
     private lateinit var analytics: FirebaseAnalytics
 
     private var appId: String = BuildConfig.APP_ID
-    private var pageId = "config"
+    private var pageId = "Config"
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,11 +30,10 @@ class ConfigFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val root = inflater.inflate(R.layout.fragment_config, container, false)
-
         analytics = FirebaseAnalytics.getInstance(context)
+        AnalyticsUtils.setPageData(analytics, bundle, appId, pageId)
 
-        setAnalytics()
+        val root = inflater.inflate(R.layout.fragment_config, container, false)
 
         changeLanguage(root)
 
@@ -79,12 +79,6 @@ class ConfigFragment : Fragment() {
         ptBR.setOnClickListener { if (ptBREnabled) openConfirmation("pt", "Portuguese (Brazil)") }
     }
 
-    private fun setAnalytics() {
-        bundle.clear()
-        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "$appId:$pageId")
-        analytics.logEvent("e_PageView", bundle)
-    }
-
     private fun openConfirmation(localeLang: String, lang: String) {
 
         val builder = AlertDialog.Builder(requireActivity())
@@ -95,6 +89,7 @@ class ConfigFragment : Fragment() {
             .setPositiveButton(R.string.txt_yes) { dialog, id ->
                 context?.let { it1 -> LocaleUtils.updateLanguage(it1, localeLang) }
 
+                AnalyticsUtils.setClickData(analytics, bundle, appId, pageId,"LanguageChange_$localeLang")
                 requireFragmentManager().beginTransaction().detach(this).attach(this).commit()
             }
             .setNegativeButton(R.string.txt_cancel) { dialog, id -> dialog.dismiss() }

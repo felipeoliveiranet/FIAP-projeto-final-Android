@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.BuildConfig
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.R
+import com.francisco.geovane.marcello.felipe.projetofinalandroid.utils.AnalyticsUtils
 import com.google.firebase.analytics.FirebaseAnalytics
 
 class AboutFragment : Fragment() {
@@ -18,13 +19,14 @@ class AboutFragment : Fragment() {
     private lateinit var analytics: FirebaseAnalytics
 
     private var appId: String = BuildConfig.APP_ID
-    private var pageId: String = "about"
+    private var pageId: String = "About"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val root = inflater.inflate(R.layout.fragment_about, container, false)
-
         analytics = FirebaseAnalytics.getInstance(context)
+        AnalyticsUtils.setPageData(analytics, bundle, appId, pageId)
+
+        val root = inflater.inflate(R.layout.fragment_about, container, false)
 
         setAnalytics()
         setInfos(root)

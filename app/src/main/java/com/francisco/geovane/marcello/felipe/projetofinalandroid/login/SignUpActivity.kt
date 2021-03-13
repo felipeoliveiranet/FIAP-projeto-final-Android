@@ -31,8 +31,8 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_up)
         auth = Firebase.auth
 
-        var appId: String = BuildConfig.APP_ID
-        var pageId: String = this.localClassName
+        val appId: String = BuildConfig.APP_ID
+        val pageId: String = this.localClassName
 
         btn_sign_up.setOnClickListener {
 

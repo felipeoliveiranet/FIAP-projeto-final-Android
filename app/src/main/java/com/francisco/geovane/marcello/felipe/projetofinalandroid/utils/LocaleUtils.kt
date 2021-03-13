@@ -2,7 +2,6 @@ package com.francisco.geovane.marcello.felipe.projetofinalandroid.utils
 
 import android.content.Context
 import android.content.res.Configuration
-import android.content.res.Resources
 import android.preference.PreferenceManager
 import android.text.TextUtils
 import java.util.*
