@@ -33,7 +33,7 @@ class LogoutFragment : Fragment() {
         auth = Firebase.auth
 
         val builder = AlertDialog.Builder(requireActivity())
-        builder.setMessage("Tem certeza que deseja realizar o logout no app?")
+        builder.setMessage("Tem certeza que deseja sair?")
             .setCancelable(false)
             .setPositiveButton("Sim") { dialog, id ->
                 auth.signOut()
