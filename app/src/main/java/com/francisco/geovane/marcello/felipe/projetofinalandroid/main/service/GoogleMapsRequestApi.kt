@@ -1,6 +1,5 @@
 package com.francisco.geovane.marcello.felipe.projetofinalandroid.main.service
 
-import com.francisco.geovane.marcello.felipe.projetofinalandroid.main.repository.GoogleMapsPlaceRepositoryImpl
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

@@ -19,7 +19,7 @@
             android:textAlignment="center"
             android:textSize="28sp"
             android:textStyle="bold"
-            android:text="Search" />
+            android:text="@string/title_search" />
         <EditText
             android:id="@+id/text_address"
             android:layout_width="match_parent"
@@ -55,8 +55,7 @@
             android:layout_marginTop="50dp"
             android:textAlignment="center"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:text="" />
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/text_category"
             android:layout_width="match_parent"

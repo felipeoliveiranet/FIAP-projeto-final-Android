@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.BuildConfig
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.R
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.main.repository.GoogleMapsPlaceRepositoryImpl
@@ -36,7 +37,6 @@ class MapFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
 
         analytics = FirebaseAnalytics.getInstance(context)
         AnalyticsUtils.setPageData(analytics, bundle, appId, pageId)
@@ -104,7 +104,7 @@ class MapFragment : Fragment() {
             txtInfo.text = lat.toString() + "\n" + long.toString()
 
         }, {
-            Log.e("PLACE_DETAILS", it?.localizedMessage.toString())
+            Log.e("PLACE_DETAILS_ERR", it?.localizedMessage.toString())
         })
     }
 }
