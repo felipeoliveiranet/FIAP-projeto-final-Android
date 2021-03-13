@@ -25,9 +25,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:backgroundTint="@color/bgColorPrimary"
+            android:textColor="@color/textColorPrimary"
+            android:textColorHint="@color/textColorPrimary"
             android:inputType="textEmailAddress"/>
 
         <EditText
@@ -35,15 +35,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:backgroundTint="@color/bgColorPrimary"
+            android:textColor="@color/textColorPrimary"
+            android:textColorHint="@color/textColorPrimary"
             android:inputType="textPassword"/>
         <Button
             android:id="@+id/btn_sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimaryDark"
+            android:background="@color/colorPrimary"
             android:padding="16dp"
             android:text="@string/sign_up"
             android:textSize="18sp"
@@ -57,7 +57,7 @@
         android:id="@+id/btn_sign_in"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_500"
+        android:background="@color/colorSecondary"
         android:padding="16dp"
         android:text="@string/have_account"
         android:textColor="@android:color/white"

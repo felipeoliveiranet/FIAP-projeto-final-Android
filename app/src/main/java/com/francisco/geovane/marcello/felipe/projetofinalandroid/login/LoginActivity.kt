@@ -10,35 +10,49 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.francisco.geovane.marcello.felipe.projetofinalandroid.BuildConfig
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.R
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.main.MainActivity
+import com.francisco.geovane.marcello.felipe.projetofinalandroid.utils.AnalyticsUtils
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_login.btn_sign_up
-import kotlinx.android.synthetic.main.activity_login.tv_password
-import kotlinx.android.synthetic.main.activity_login.tv_username
-import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class LoginActivity : AppCompatActivity() {
 
-
     private lateinit var auth: FirebaseAuth
+
+    private var bundle: Bundle = Bundle()
+    private lateinit var analytics: FirebaseAnalytics
+
+    private var appId: String = BuildConfig.APP_ID
+    private var pageId: String = "Login"
+
     private var TAG: String = "FIREBASE"
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+
+        analytics = FirebaseAnalytics.getInstance(this)
+        AnalyticsUtils.setPageData(analytics, bundle, appId, pageId)
+
         supportActionBar?.hide()
         setContentView(R.layout.activity_login)
         auth = Firebase.auth
 
         btn_sign_up.setOnClickListener {
+
+            AnalyticsUtils.setClickData(analytics, bundle, appId, pageId, "SingIn")
             startActivity(Intent(this, SignUpActivity::class.java))
         }
 
         btn_log_in.setOnClickListener {
+
+            AnalyticsUtils.setClickData(analytics, bundle, appId, pageId, "LogIn")
             signInUser()
         }
     }
@@ -83,6 +97,7 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
+                    analytics.setUserId(user.toString())
                     updateUI(user)
                 } else {
                     Log.w(TAG, task.exception)
