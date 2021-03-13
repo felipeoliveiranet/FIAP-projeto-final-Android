@@ -12,6 +12,7 @@
     <string name="logout">Are you sure you want to logout?</string>
 
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_search">Search</string>
     <string name="title_welcome">Welcome</string>
     <string name="title_home">Map</string>
     <string name="title_dashboard">List</string>
