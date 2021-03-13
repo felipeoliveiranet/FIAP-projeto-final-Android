@@ -37,8 +37,11 @@ class MapFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+
         analytics = FirebaseAnalytics.getInstance(context)
         AnalyticsUtils.setPageData(analytics, bundle, appId, pageId)
+
+        mapViewModel = ViewModelProvider(this).get(MapViewModel::class.java)
 
         val root = inflater.inflate(R.layout.fragment_map, container, false)
 

@@ -41,6 +41,7 @@ class LogoutFragment : Fragment() {
         AnalyticsUtils.setPageData(analytics, bundle, appId, pageId)
 
         val builder = AlertDialog.Builder(requireActivity())
+
         builder.setMessage(R.string.logout)
             .setCancelable(false)
             .setPositiveButton(R.string.txt_yes) { dialog, id ->
