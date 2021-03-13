@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.francisco.geovane.marcello.felipe.projetofinalandroid">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".LocaleDefault"
         android:allowBackup="true"
@@ -11,6 +10,7 @@
         android:roundIcon="@drawable/logo"
         android:label="${appLabel}"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/Theme.ProjetoFinalAndroid">
         <activity
             android:name=".main.MainActivity"
