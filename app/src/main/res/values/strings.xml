@@ -17,7 +17,6 @@
     <string name="logout_cancel">Cancel</string>
 
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_search">Search</string>
     <string name="title_welcome">Welcome</string>
     <string name="title_home">Map</string>
     <string name="title_dashboard">List</string>
@@ -29,6 +28,12 @@
     <string name="txt_yes">Yes</string>
     <string name="txt_no">No</string>
     <string name="txt_cancel">Cancel</string>
+
+    <!-- maps page -->
+    <string name="txt_fill_address">Fill an address!</string>
+    <string name="txt_address">Address</string>
+    <string name="txt_search">Search</string>
+    <string name="txt_reset">Reset</string>
 
     <!-- about page -->
     <string name="about_version">Version</string>
