@@ -1,6 +1,5 @@
 package com.francisco.geovane.marcello.felipe.projetofinalandroid.main.repository
 
-import android.util.Log
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.main.model.PlaceDetailsResponse
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.main.model.PlaceIdResponse
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.main.service.GoogleMapsPlaceService
@@ -19,7 +18,12 @@ class GoogleMapsPlaceRepositoryImpl(var service: GoogleMapsPlaceService) : Googl
         service.getPlaceId(key, address).enqueue(object : Callback<PlaceIdResponse> {
 
             override fun onFailure(call: Call<PlaceIdResponse>, t: Throwable) { onError(t) }
-            override fun onResponse(call: Call<PlaceIdResponse>, response: Response<PlaceIdResponse>) { onComplete(response.body()) }
+            override fun onResponse(call: Call<PlaceIdResponse>, response: Response<PlaceIdResponse>) {
+                if(response.isSuccessful && response.body()?.status.equals("OK", true))
+                    onComplete(response.body())
+                else
+                    onError(Throwable("getPlaceId -> Request failed!"))
+            }
         })
     }
 
@@ -32,7 +36,12 @@ class GoogleMapsPlaceRepositoryImpl(var service: GoogleMapsPlaceService) : Googl
         service.getPlaceDetailsById(key, place_id).enqueue(object : Callback<PlaceDetailsResponse> {
 
             override fun onFailure(call: Call<PlaceDetailsResponse>, t: Throwable) { onError(t) }
-            override fun onResponse(call: Call<PlaceDetailsResponse>, response: Response<PlaceDetailsResponse>) { onComplete(response.body()) }
+            override fun onResponse(call: Call<PlaceDetailsResponse>, response: Response<PlaceDetailsResponse>) {
+                if(response.isSuccessful && response.body()?.status.equals("OK", true))
+                    onComplete(response.body())
+                else
+                    onError(Throwable("getPlaceDetails -> Request failed!"))
+            }
         })
     }
 }

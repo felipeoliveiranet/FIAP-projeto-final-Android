@@ -7,36 +7,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:512556039288:android:e912f43166c6a3aceac18d",
-        "android_client_info": {
-          "package_name": "com.francisco.geovane.marcello.felipe.projetofinalandroid"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "512556039288-bkdm0v7d1gp0skmmburuj9ahl1oie5rn.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDdHJ6njZymMhZXJy9uyhlxJUaKUjoXaGY"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "512556039288-bkdm0v7d1gp0skmmburuj9ahl1oie5rn.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:512556039288:android:9d0cdd0c662fd3e7eac18d",
+        "mobilesdk_app_id": "1:512556039288:android:a2d84fd0b3b06305eac18d",
         "android_client_info": {
           "package_name": "com.francisco.geovane.marcello.felipe.projetofinalandroid.places"
         }
