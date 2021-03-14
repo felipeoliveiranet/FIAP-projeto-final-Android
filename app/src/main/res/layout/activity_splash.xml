@@ -39,4 +39,15 @@
         android:fontFamily="sans-serif-black"
         android:layout_gravity="center"
         android:textAlignment="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/description_welcome"
+        android:text="@string/description_welcome"
+        android:textSize="18sp"
+        android:textColor="@color/textColorPrimary"
+        android:fontFamily="sans-serif-black"
+        android:layout_gravity="center"
+        android:textAlignment="center"/>
 </LinearLayout>

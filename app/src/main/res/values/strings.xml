@@ -19,6 +19,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_search">Search</string>
     <string name="title_welcome">Welcome</string>
+    <string name="description_welcome">Register your places to walk and always find something new!</string>
     <string name="title_home">Map</string>
     <string name="title_dashboard">List</string>
     <string name="title_about">About</string>
