@@ -9,7 +9,12 @@
 
     <string name="email">E-mail</string>
     <string name="password">Senha</string>
-    <string name="logout">Tem certeza que deseja realizar o logout?</string>
+
+    <!--  logout page  -->
+    <string name="logout_title">Sair</string>
+    <string name="logout_description">Tem certeza que deseja realizar o logout?</string>
+    <string name="logout_confirm">Sair</string>
+    <string name="logout_cancel">Cancelar</string>
 
     <string name="title_activity_main">MainActivity</string>
     <string name="title_welcome">Bem-vindo</string>
