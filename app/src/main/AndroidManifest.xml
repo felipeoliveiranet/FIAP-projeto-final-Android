@@ -17,6 +17,7 @@
         android:label="${appLabel}"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
+        tools:replace="android:icon, android:roundIcon"
         android:theme="@style/Theme.ProjetoFinalAndroid">
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="${mapsApiKey}" />
         <activity android:name=".main.MainActivity" android:label="@string/title_activity_main" />
