@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.francisco.geovane.marcello.felipe.projetofinalandroid">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,7 +13,8 @@
         android:label="${appLabel}"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.ProjetoFinalAndroid">
+        android:theme="@style/Theme.ProjetoFinalAndroid"
+        tools:replace="android:icon, android:roundIcon">
         <activity
             android:name=".main.MainActivity"
             android:label="@string/title_activity_main" />
