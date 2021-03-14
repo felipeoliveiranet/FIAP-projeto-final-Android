@@ -17,7 +17,6 @@
     <string name="logout_cancel">Cancelar</string>
 
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_search">Buscar</string>
     <string name="title_welcome">Bem-vindo</string>
     <string name="description_welcome">Registre seus lugares para passeio e sempre ache algo novo!</string>
     <string name="title_home">Mapa</string>
@@ -30,6 +29,12 @@
     <string name="txt_yes">Sim</string>
     <string name="txt_no">Não</string>
     <string name="txt_cancel">Cancelar</string>
+
+    <!-- maps page -->
+    <string name="txt_fill_address">Preencha um endereço!</string>
+    <string name="txt_address">Endereço</string>
+    <string name="txt_search">Buscar</string>
+    <string name="txt_reset">Limpar</string>
 
     <!-- about page -->
     <string name="about_version">Versão</string>
