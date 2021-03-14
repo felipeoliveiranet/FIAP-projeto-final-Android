@@ -2,8 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.francisco.geovane.marcello.felipe.projetofinalandroid">
 
+    <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".LocaleDefault"
         android:allowBackup="true"
@@ -13,9 +17,8 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.ProjetoFinalAndroid">
-        <activity
-            android:name=".main.MainActivity"
-            android:label="@string/title_activity_main" />
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="${mapsApiKey}" />
+        <activity android:name=".main.MainActivity" android:label="@string/title_activity_main" />
         <activity android:name=".splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

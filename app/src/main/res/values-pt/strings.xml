@@ -12,7 +12,6 @@
     <string name="logout">Tem certeza que deseja realizar o logout?</string>
 
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_search">Buscar</string>
     <string name="title_welcome">Bem-vindo</string>
     <string name="title_home">Mapa</string>
     <string name="title_dashboard">Listagem</string>
@@ -24,6 +23,12 @@
     <string name="txt_yes">Sim</string>
     <string name="txt_no">Não</string>
     <string name="txt_cancel">Cancelar</string>
+
+    <!-- maps page -->
+    <string name="txt_fill_address">Preencha um endereço!</string>
+    <string name="txt_address">Endereço</string>
+    <string name="txt_search">Buscar</string>
+    <string name="txt_reset">Limpar</string>
 
     <!-- about page -->
     <string name="about_version">Versão</string>
