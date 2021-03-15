@@ -12,6 +12,14 @@ androidExtensions {
 }
 
 android {
+    signingConfigs {
+        'default' {
+            storeFile file('/Users/franciscofinanzero/Desktop/android_keystore')
+            storePassword '123456'
+            keyPassword '123456'
+            keyAlias 'key0'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
@@ -23,6 +31,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.'default'
     }
 
     compileOptions {
@@ -41,6 +50,8 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.'default'
+            manifestPlaceholders = [ mapsApiKey : "AIzaSyBmn1wjXXCvmZtnmLJsORAAE1cleCByWjc" ]
         }
     }
 
