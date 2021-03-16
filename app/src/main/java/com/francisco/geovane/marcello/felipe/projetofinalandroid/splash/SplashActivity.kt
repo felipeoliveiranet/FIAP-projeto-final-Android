@@ -10,13 +10,14 @@ import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.francisco.geovane.marcello.felipe.projetofinalandroid.BaseActivity
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.BuildConfig
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.R
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.login.LoginActivity
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.utils.AnalyticsUtils
 import com.google.firebase.analytics.FirebaseAnalytics
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
 
     private var bundle: Bundle = Bundle()
     private lateinit var analytics: FirebaseAnalytics

@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import com.francisco.geovane.marcello.felipe.projetofinalandroid.BuildConfig
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.R
+import com.francisco.geovane.marcello.felipe.projetofinalandroid.BuildConfig
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.utils.AnalyticsUtils
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.utils.LocaleUtils
 import com.google.firebase.analytics.FirebaseAnalytics
@@ -24,16 +26,18 @@ class ConfigFragment : Fragment() {
     private var appId: String = BuildConfig.APP_ID
     private var pageId = "Config"
 
+    lateinit var root: View
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
 
         analytics = FirebaseAnalytics.getInstance(context)
         AnalyticsUtils.setPageData(analytics, bundle, appId, pageId)
 
-        val root = inflater.inflate(R.layout.fragment_config, container, false)
+        root = inflater.inflate(R.layout.fragment_config, container, false)
 
         changeLanguage(root)
 
@@ -48,7 +52,7 @@ class ConfigFragment : Fragment() {
         val ptBR: ImageView = root.findViewById(R.id.img_flag_ptBR)
         var ptBREnabled : Boolean = true
 
-        val lang = resources.configuration.locale.language.toString()
+        val lang = LocaleUtils.getPrefLang(requireContext()).toString()
 
         val cc: TextView = root.findViewById(R.id.text_language_current)
         cc.text = "(${resources.getString(R.string.config_lang_current)}: $lang)"
@@ -82,18 +86,31 @@ class ConfigFragment : Fragment() {
     private fun openConfirmation(localeLang: String, lang: String) {
 
         val builder = AlertDialog.Builder(requireActivity())
-        val text: String = String.format(resources.getString(R.string.config_lang_confirmation), lang)
+        val text: String = String.format(
+                resources.getString(R.string.config_lang_confirmation),
+                lang
+        )
 
         builder.setMessage(text)
             .setCancelable(false)
-            .setPositiveButton(R.string.txt_yes) { dialog, id ->
-                context?.let { it1 -> LocaleUtils.updateLanguage(it1, localeLang) }
+            .setPositiveButton(R.string.txt_yes) { _, _ ->
 
-                AnalyticsUtils.setClickData(analytics, bundle, appId, pageId,"LanguageChange_$localeLang")
-                requireFragmentManager().beginTransaction().detach(this).attach(this).commit()
+                LocaleUtils.setLocale(requireContext(), localeLang)
+
+                AnalyticsUtils.setClickData(
+                        analytics,
+                        bundle,
+                        appId,
+                        pageId,
+                        "LanguageChange_$localeLang"
+                )
+
+                requireActivity().overridePendingTransition(0,0)
+                requireActivity().recreate()
+                requireActivity().overridePendingTransition(0,0)
             }
-            .setNegativeButton(R.string.txt_cancel) { dialog, id -> dialog.dismiss() }
-        val alert = builder.create()
-        alert.show()
-    }
+            .setNegativeButton(R.string.txt_cancel) { dialog, _ -> dialog.dismiss() }
+
+        builder.create().show()
+   }
 }

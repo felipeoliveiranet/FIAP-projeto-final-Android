@@ -26,7 +26,7 @@
     <fragment
         android:id="@+id/navigation_config"
         android:name="com.francisco.geovane.marcello.felipe.projetofinalandroid.main.ui.config.ConfigFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_config"
         tools:layout="@layout/fragment_config" />
 
     <fragment
