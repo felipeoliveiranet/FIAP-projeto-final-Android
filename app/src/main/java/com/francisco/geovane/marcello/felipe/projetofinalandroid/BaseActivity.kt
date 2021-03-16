@@ -4,9 +4,15 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.utils.LocaleUtils
+import com.google.firebase.analytics.FirebaseAnalytics
 import java.util.*
 
 open class BaseActivity : AppCompatActivity() {
+
+    protected var bundle: Bundle = Bundle()
+    protected lateinit var analytics: FirebaseAnalytics
+
+    protected var appId: String = BuildConfig.APP_ID
 
     private var appDefaultLocale: Locale? = null
 
@@ -19,7 +25,7 @@ open class BaseActivity : AppCompatActivity() {
 
     override fun attachBaseContext(base: Context) {
 
-        val contextBase = LocaleUtils.presetLocale(base!!)
+        val contextBase = LocaleUtils.presetLocale(base)
 
         super.attachBaseContext(contextBase)
     }

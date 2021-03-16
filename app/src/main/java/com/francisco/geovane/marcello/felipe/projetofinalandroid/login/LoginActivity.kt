@@ -9,9 +9,7 @@ import android.util.Patterns
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.BaseActivity
-import com.francisco.geovane.marcello.felipe.projetofinalandroid.BuildConfig
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.R
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.main.MainActivity
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.utils.AnalyticsUtils
@@ -26,10 +24,6 @@ class LoginActivity : BaseActivity() {
 
     private lateinit var auth: FirebaseAuth
 
-    private var bundle: Bundle = Bundle()
-    private lateinit var analytics: FirebaseAnalytics
-
-    private var appId: String = BuildConfig.APP_ID
     private var pageId: String = "Login"
 
     private var TAG: String = "FIREBASE"

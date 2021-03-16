@@ -28,7 +28,6 @@ class AboutFragment : Fragment() {
 
         val root = inflater.inflate(R.layout.fragment_about, container, false)
 
-        setAnalytics()
         setInfos(root)
         setDevelopedBy(root)
 
@@ -44,13 +43,6 @@ class AboutFragment : Fragment() {
 
         val appVersion: TextView = root.findViewById(R.id.text_app_version_number)
         appVersion.text = version
-    }
-
-    private fun setAnalytics() {
-
-        bundle.clear()
-        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "$appId:$pageId")
-        analytics.logEvent("e_PageView", bundle)
     }
 
     private fun setDevelopedBy(root: View) {

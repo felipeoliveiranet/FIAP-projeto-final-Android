@@ -7,13 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import com.francisco.geovane.marcello.felipe.projetofinalandroid.R
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.BuildConfig
+import com.francisco.geovane.marcello.felipe.projetofinalandroid.R
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.utils.AnalyticsUtils
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.utils.LocaleUtils
 import com.google.firebase.analytics.FirebaseAnalytics
@@ -26,8 +24,6 @@ class ConfigFragment : Fragment() {
     private var appId: String = BuildConfig.APP_ID
     private var pageId = "Config"
 
-    lateinit var root: View
-
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -37,7 +33,7 @@ class ConfigFragment : Fragment() {
         analytics = FirebaseAnalytics.getInstance(context)
         AnalyticsUtils.setPageData(analytics, bundle, appId, pageId)
 
-        root = inflater.inflate(R.layout.fragment_config, container, false)
+        val root = inflater.inflate(R.layout.fragment_config, container, false)
 
         changeLanguage(root)
 

@@ -1,7 +1,6 @@
 package com.francisco.geovane.marcello.felipe.projetofinalandroid.utils
 
 import android.content.Context
-import android.content.res.Configuration
 import android.preference.PreferenceManager
 import java.util.*
 
@@ -11,9 +10,9 @@ object LocaleUtils {
 
     fun presetLocale(context: Context): Context {
 
-        val lang = LocaleUtils.getPrefLang(context)
+        val lang = getPrefLang(context)
 
-        return LocaleUtils.setLocale(context, lang!!)
+        return setLocale(context, lang!!)
     }
 
     fun setLocale(context: Context, language: String): Context {
@@ -37,7 +36,7 @@ object LocaleUtils {
         return preferences.getString(PREF_LANG, defaultLanguage)
     }
 
-    fun setPrefLang(context: Context, language: String) {
+    private fun setPrefLang(context: Context, language: String) {
 
         val preferences = PreferenceManager.getDefaultSharedPreferences(context)
         val editor = preferences.edit()

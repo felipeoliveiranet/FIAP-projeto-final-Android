@@ -9,9 +9,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.BaseActivity
-import com.francisco.geovane.marcello.felipe.projetofinalandroid.BuildConfig
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.R
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.login.LoginActivity
 import com.francisco.geovane.marcello.felipe.projetofinalandroid.utils.AnalyticsUtils
@@ -19,10 +17,6 @@ import com.google.firebase.analytics.FirebaseAnalytics
 
 class SplashActivity : BaseActivity() {
 
-    private var bundle: Bundle = Bundle()
-    private lateinit var analytics: FirebaseAnalytics
-
-    private var appId: String = BuildConfig.APP_ID
     private var pageId: String = "Splash"
 
     val SPLASH_SCREEN = 5000
