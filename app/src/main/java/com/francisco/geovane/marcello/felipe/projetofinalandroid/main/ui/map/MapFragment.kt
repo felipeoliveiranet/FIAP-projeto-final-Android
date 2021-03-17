@@ -50,11 +50,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener
     private val defaultAddress = LatLng(-23.5641095, -46.65240989999999)
     private val defaultZoom = 16F
 
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_map, container, false)
 
         loadMap(root, savedInstanceState)
@@ -70,7 +66,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener
     }
 
     private fun fetchRemoteConfig(root: View) {
-
         remoteConfig = Firebase.remoteConfig
         val configSettings = remoteConfigSettings {
             minimumFetchIntervalInSeconds = 3600
@@ -105,7 +100,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener
         }
 
         btnReset.setOnClickListener {
-
             searchHideKeyboard()
             textAddress.setText("")
             updateMap(defaultAddress,"FIAP")
@@ -113,15 +107,13 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener
     }
 
     private fun searchHideKeyboard() {
-
         if (requireActivity().currentFocus != null) {
             val inputManager = requireActivity().getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-            inputManager.hideSoftInputFromWindow(getActivity()?.getCurrentFocus()?.getWindowToken(),0)
+            inputManager.hideSoftInputFromWindow(activity?.currentFocus?.windowToken,0)
         }
     }
 
     private fun searchAddress(root: View, key: String, address: String) {
-
         val interceptor = HttpLoggingInterceptor()
         interceptor.apply { interceptor.level = HttpLoggingInterceptor.Level.BODY }
 
@@ -129,6 +121,10 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener
         val retrofit = GoogleMapsRequestApi.setClient(client)
         val service = retrofit.create(GoogleMapsPlaceService::class.java)
         val repo = GoogleMapsPlaceRepositoryImpl(service)
+
+        // FLAVOR
+        val flavor = appId
+        Log.i("FLAVOR", flavor)
 
         repo.getPlaceDetailsById(key, address, {
             val detail = it?.results?.first()
