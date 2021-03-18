@@ -4,6 +4,7 @@ import android.content.Context.INPUT_METHOD_SERVICE
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -32,7 +33,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.io.IOException
 
-@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
+@Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS", "RECEIVER_NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener, GoogleMap.OnMarkerDragListener {
     
     private lateinit var analytics: FirebaseAnalytics
@@ -82,7 +83,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener
     }
 
     private fun searchTrigger(root: View) {
-
         val btnSearch: Button = root.findViewById(R.id.btn_search)
         val btnReset: Button = root.findViewById(R.id.btn_reset)
         val textAddress: EditText = root.findViewById(R.id.text_address)
@@ -90,12 +90,11 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener
         key = remoteConfig.getString("google_maps_api_key")
 
         btnSearch.setOnClickListener {
-
             if(textAddress.text.toString().isEmpty()) {
                 Toast.makeText(context, R.string.txt_fill_address, Toast.LENGTH_LONG).show()
             } else {
                 searchHideKeyboard()
-                searchAddress(root, key, textAddress.text.toString())
+                searchAddress(key, textAddress.text.toString())
             }
         }
 
@@ -113,7 +112,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener
         }
     }
 
-    private fun searchAddress(root: View, key: String, address: String) {
+    private fun searchAddress(key: String, address: String) {
         val interceptor = HttpLoggingInterceptor()
         interceptor.apply { interceptor.level = HttpLoggingInterceptor.Level.BODY }
 
@@ -124,7 +123,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener
 
         // FLAVOR
         val flavor = appId
-        Log.i("FLAVOR", flavor)
 
         repo.getPlaceDetailsById(key, address, {
             val detail = it?.results?.first()
@@ -140,6 +138,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener
                 }
             }
 
+            Log.i("CATS", cats)
             updateMap(LatLng(lat!!, long!!), name!!)
 
         }, {
@@ -156,7 +155,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener
         try {
             MapsInitializer.initialize(requireActivity().applicationContext)
         } catch (e: Exception) {
-            Log.d(LOG_TAG, e?.localizedMessage.toString())
+            Log.d(LOG_TAG, e.localizedMessage.toString())
         }
 
         mapView.getMapAsync(this)
@@ -170,7 +169,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener
         updateMap(defaultAddress, "FIAP" )
 
         map.setOnMarkerDragListener(this)
-        map.setOnMapClickListener(this);
+        map.setOnMapClickListener(this)
     }
 
     override fun onMarkerDragStart(movedPoint: Marker) { }
@@ -187,12 +186,23 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener
 
         try {
 
-            var addressList: List<Address> = geocoder.getFromLocation(latlong.latitude, latlong.longitude, 1)
+            val addressList: List<Address> = geocoder.getFromLocation(latlong.latitude, latlong.longitude, 1)
 
-            val placeName: String = if(name.isNullOrEmpty()) addressList.get(0).featureName else name
-            val address: String = addressList.get(0).getAddressLine(0)
 
-            var options: MarkerOptions = MarkerOptions()
+            var placeCustomName = ""
+            // Tratamento de placeName
+            placeCustomName = if (name.isEmpty() && !TextUtils.isDigitsOnly(addressList[0].featureName)) {
+                addressList[0].featureName
+            } else if (name.isEmpty() && TextUtils.isDigitsOnly(addressList[0].featureName)){
+                addressList[0].subLocality + " " + addressList[0].subThoroughfare + ", " + addressList[0].subAdminArea
+            } else {
+                name
+            }
+
+            val placeName: String = placeCustomName
+            val address: String = addressList[0].getAddressLine(0)
+
+            val options: MarkerOptions = MarkerOptions()
             options.position(latlong)
             options.title(placeName)
             options.draggable(true)
@@ -202,13 +212,13 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(latlong, defaultZoom))
 
         } catch (e: IOException) {
-            Log.d(LOG_TAG, e?.localizedMessage.toString())
+            Log.d(LOG_TAG, e.localizedMessage.toString())
         }
     }
 
     override fun onResume() {
 
-        super.onResume();
-        mapView.onResume();
+        super.onResume()
+        mapView.onResume()
     }
 }
