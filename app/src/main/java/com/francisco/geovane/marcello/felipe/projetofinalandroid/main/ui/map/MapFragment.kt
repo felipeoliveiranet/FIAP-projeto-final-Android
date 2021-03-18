@@ -207,7 +207,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMapClickListener
             options.title(placeName)
             options.draggable(true)
 
-            map.clear()
+//            map.clear()
             map.addMarker(options).showInfoWindow()
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(latlong, defaultZoom))
 
