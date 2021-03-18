@@ -29,7 +29,7 @@
             android:text="Av. Washington Luís, s/nº - Vila Congonhas, São Paulo - SP, 04626-911"
             android:imeOptions="actionDone"
             android:singleLine="true"
-            />
+            android:autofillHints="" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,6 +70,7 @@
         <com.google.android.gms.maps.MapView
             android:id="@+id/mapView"
             android:layout_width="match_parent"
-            android:layout_height="1100dp"
-            />
+            android:layout_height="0dp"
+            android:layout_weight="10"
+             />
 </LinearLayout>
