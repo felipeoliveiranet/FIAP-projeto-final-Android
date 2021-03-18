@@ -63,14 +63,14 @@ android {
             buildConfigField "String", "APP_ID", '"PLACES"'
             dimension "version"
             applicationIdSuffix = ".places"
-            versionName "1.0.1"
+            versionName "1.1.0"
         }
         restaurants {
             manifestPlaceholders = [appLabel:"@string/app_name"]
             buildConfigField "String", "APP_ID", '"RESTAURANTS"'
             dimension "version"
             applicationIdSuffix = ".restaurants"
-            versionName "1.0.2"
+            versionName "1.1.0"
         }
     }
 }
